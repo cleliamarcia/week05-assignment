@@ -21,7 +21,24 @@ Create a function named squareCode that will receive a message, and return the s
 */
 
 const squareCode = function(message) {
-  // Put your solution here
+  message = message.replace(/\s/g, '');
+  const msgLength = Math.ceil(Math.sqrt(message.length));
+  let Squareversion = [];
+
+  for (let i = 0 ; i < msgLength ; i++) {
+    for (let j = 0 ; j < msgLength ; j++ ) {
+      if (!Squareversion[j]) {
+        Squareversion[j] = "";
+      }
+      if ((i*msgLength)+j < message.length) {
+        Squareversion[j] += message[(i*msgLength)+j]; 
+      }
+    }
+    
+  }
+  Squareversion = Squareversion.join("\n");
+
+  return Squareversion;
 };
 
 console.log(squareCode("chill out")); // clu hlt io  

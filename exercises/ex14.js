@@ -23,7 +23,63 @@ Penny (1¢)
 */
 
 const calculateChange = function(total, cash) {
-  // Your code here
+  let balance = cash - total;
+  let totalchange = {};
+  let amount = 0;
+
+  amount = Math.floor(balance / (20 * 100));
+  if (amount > 0) {
+    totalchange.twentyDollar = amount;
+    balance -= 20 * 100 * amount;
+  }
+
+  amount = Math.floor(balance / (10 * 100));
+  if (amount > 0) {
+    totalchange.tenDollar = amount;
+    balance -= 10 * 100 * amount;
+  }
+
+  amount = Math.floor(balance / (5 * 100));
+  if (amount > 0) {
+    totalchange.fiveDollar = amount;
+    balance -= 5 * 100 * amount;
+  }
+
+  amount = Math.floor(balance / (2 * 100));
+  if (amount > 0) {
+    totalchange.twoDollar = amount;
+    balance -= 2 * 100 * amount;
+  }
+
+  amount = Math.floor(balance / (1 * 100));
+  if (amount > 0) {
+    totalchange.oneDollar = amount;
+    balance -= 1 * 100 * amount;
+  }
+
+  amount = Math.floor(balance / 25);
+  if (amount > 0) {
+    totalchange.quarter = amount;
+    balance -= 25 * amount;
+  }
+
+  amount = Math.floor(balance / 10);
+  if (amount > 0) {
+    totalchange.dime = amount;
+    balance -= 10 * amount;
+  }
+
+  amount = Math.floor(balance / 5);
+  if (amount > 0) {
+    totalchange.nickel = amount;
+    balance -= 5 * amount;
+  }
+
+  if (balance > 0) {
+    totalchange.penny = balance;
+  }
+
+  return totalchange;
 };
 
 console.log(calculateChange(1787, 2000)); // { twoDollar: 1, dime: 1, penny: 3 }

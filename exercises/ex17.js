@@ -22,8 +22,17 @@ Create a function named urlDecode that will receive a URL encoded string, and re
 */
 
 const urlDecode = function(text) {
-  // Put your solution here
+  let Decode = {};
+  const answer = text.split("&");
+  
+  for (let i = 0 ; i < answer.length ; i++) {
+    let columns = answer[i].split("=");
+    Decode[columns[0]] = columns[1].replace(/%20/gi," ");
+  }
+  
+  return Decode;
 };
+
 
 console.log(urlDecode("duck=rubber")); //{duck: "rubber"}
 console.log(urlDecode("city=Vancouver&weather=lots%20of%20rain")); // {city: "Vancouver", weather: "lots of rain"}

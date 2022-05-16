@@ -9,7 +9,32 @@ Create a function named talkingCalendar that takes in a date string with the for
 */
 
 const talkingCalendar = function(date) {
-  // Your code here
+  const listMonth = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  let YY = date.substring(0,4);
+  let MM = listMonth[date.substring(5,7) -1];
+  let DD = date.substring(8,10);
+  if (DD < 10) {
+    DD = DD.substring(1,2);
+  }
+  switch (DD) {
+    case "1":
+    case "21":
+    case "31":
+      DD += "st";
+      break;
+    case "2":
+    case "22":
+      DD += "nd";
+      break;
+    case "3","23":
+      DD += "rd";
+      break;
+    default:
+      DD += "th";
+  }
+
+  return MM + " " + DD + ", " + YY;
+
 };
 
 console.log(talkingCalendar("2017/12/02")); // December 2nd, 2017
